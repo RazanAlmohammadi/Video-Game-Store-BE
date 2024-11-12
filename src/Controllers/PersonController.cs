@@ -1,7 +1,7 @@
 namespace FusionTech.src.Controllers
 {
     [ApiController]
-    [Route("api/v1/person")]
+    [Route("api/v1/[controller]")]
     public class PersonController : ControllerBase
     {
         protected readonly IPersonService _personService;
@@ -13,14 +13,14 @@ namespace FusionTech.src.Controllers
 
         // Endpoint for SignIn
         [HttpPost("signIn")]
-        public async Task<ActionResult<string>> SignInPerson([FromBody] PersonSignInDTO personSignInDTO)
+        public async Task<ActionResult<string>> SignInPerson(
+            [FromBody] PersonSignInDTO personSignInDTO
+        )
         {
             var token = await _personService.SignInAsync(personSignInDTO);
             return Ok(token); // 200
         }
 
-      
-      
         [HttpPut("updateName")]
         public async Task<IActionResult> UpdateName([FromQuery] string name)
         {
@@ -31,8 +31,6 @@ namespace FusionTech.src.Controllers
             return BadRequest(new { message = "Failed to update name." });
         }
 
-     
-     
         [HttpPut("updatePhone")]
         public async Task<IActionResult> UpdatePhone([FromQuery] string newPhone)
         {
@@ -43,8 +41,6 @@ namespace FusionTech.src.Controllers
             return BadRequest(new { message = "Failed to update phone number." });
         }
 
-       
-     
         [HttpPut("updateProfilePicture")]
         public async Task<IActionResult> UpdateProfilePicture([FromQuery] string picturePath)
         {
@@ -55,13 +51,17 @@ namespace FusionTech.src.Controllers
             return BadRequest(new { message = "Failed to update profile picture." });
         }
 
-       
-       
         [HttpPut("updatePassword")]
-        public async Task<IActionResult> UpdatePassword([FromBody] UpdatePasswordDTO updatePasswordDto)
+        public async Task<IActionResult> UpdatePassword(
+            [FromBody] UpdatePasswordDTO updatePasswordDto
+        )
         {
             string userEmail = User.FindFirstValue(ClaimTypes.Email);
-            bool result = await _personService.EditPassword(userEmail, updatePasswordDto.OldPassword, updatePasswordDto.NewPassword);
+            bool result = await _personService.EditPassword(
+                userEmail,
+                updatePasswordDto.OldPassword,
+                updatePasswordDto.NewPassword
+            );
             if (result)
                 return Ok(new { message = "Password updated successfully." });
             return BadRequest(new { message = "Failed to update password." });
