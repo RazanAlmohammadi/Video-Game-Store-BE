@@ -10,5 +10,6 @@ namespace FusionTech.src.Services.Person
         Task<bool> EditPassword(string email, string oldPassword, string newPassword);
         Task<bool> EditPhone(string email, string newPhone);
         Task<int> GetIdByEmailAsync(string email);
+        
     }
 }

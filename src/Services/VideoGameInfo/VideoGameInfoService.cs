@@ -149,7 +149,7 @@ namespace FusionTech.src.Services.VideoGamesInfo
                 )
                 .ToList();
 
-            videoGameList = videoGameList
+             videoGameList = videoGameList
                 .Where(vg =>
                     vg.VideoGameVersions.Any(version =>
                         version.Price >= searchParameters.MinPrice
@@ -157,7 +157,7 @@ namespace FusionTech.src.Services.VideoGamesInfo
                     )
                 )
                 .ToList();
-
+ 
             videoGameList = searchParameters.SortBy switch
             {
                 SortingTypes.ByRating => searchParameters.Descending

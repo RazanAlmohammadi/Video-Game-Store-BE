@@ -123,5 +123,6 @@ namespace FusionTech.src.Services.Person
             var tokenUtils = new TokenUtils(_config);
             return tokenUtils.generateToken(foundPerson);
         }
+        
     }
 }

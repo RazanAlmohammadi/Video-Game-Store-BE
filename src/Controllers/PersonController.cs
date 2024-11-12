@@ -66,5 +66,6 @@ namespace FusionTech.src.Controllers
                 return Ok(new { message = "Password updated successfully." });
             return BadRequest(new { message = "Failed to update password." });
         }
+        
     }
 }

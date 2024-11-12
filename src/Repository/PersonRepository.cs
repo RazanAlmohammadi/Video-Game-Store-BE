@@ -61,5 +61,6 @@ namespace FusionTech.src.Repository
             idCounter!.CurrentId++;
             return await _databaseContext.SaveChangesAsync() > 0;
         }
+        
     }
 }

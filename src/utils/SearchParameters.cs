@@ -18,8 +18,8 @@ namespace FusionTech.src.Utils
                 throw CustomException.BadRequest("MaxPrice cannot be greater than 10000.");
 
             // Validate MinPrice is not greater than MaxPrice
-            /* if (MinPrice > MaxPrice)
-                throw CustomException.BadRequest("MinPrice cannot be greater than MaxPrice."); */
+            if (MinPrice > MaxPrice)
+                throw CustomException.BadRequest("MinPrice cannot be greater than MaxPrice.");
         }
     }
 }
