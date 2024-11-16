@@ -14,6 +14,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
 
+
 // add DI services
 builder
     .Services.AddScoped<IPersonService, PersonService>()
